@@ -28,3 +28,19 @@
 - Virtual Network
 
 # Harmonogram
+26.11.2020 - Wstępna dokumentacja, założenie repozytorium projektu na GitHub  
+
+10.12.2020 - Check-point 1:   
+- Skonfigurowany portal Azure
+- Interfejs użytkownika
+- Upload zdjęcia na Blob
+- Tworzenie rekordu w bazie z kodem dostępu
+- Podłączenie Event Grid
+- Wysyłanie maila z kodem dostępu
+
+14.01.2021 - Check-point 2:
+- Wykorzystanie Cognitive Services: rozpoznawanie tekstu na zdjęciu, tłumaczenie tekstu, określanie wydźwięku wypowiedzi
+- Stworzenie raportu
+
+**28.01.2021 - Prezentacja projektu**  
+
