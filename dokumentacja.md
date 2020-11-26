@@ -1,7 +1,8 @@
 # Funkcjonalność 
-- Aplikacja umożliwia analizę zdjęć oraz dokumetów .pdf zawierających dowolny tekst
-- Za jej pomocą będzie można określić wydźwięk wypowiedzi
-- Przetłumaczyć tekst na wybrany język.
+- Aplikacja umożliwia analizę zdjęć oraz dokumetów .pdf zawierających dowolny tekst.
+- Za jej pomocą będzie można:
+  - określić wydźwięk wypowiedzi,
+  - przetłumaczyć tekst na wybrany język.
 - Aplikacja generuje kod dostępu do danej analizy oraz wysyła go na wskazany przez użytkownika adres e-mail.
 
 # Architektura
