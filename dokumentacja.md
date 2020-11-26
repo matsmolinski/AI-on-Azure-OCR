@@ -1,3 +1,15 @@
+# Skład zespołu
+ - **Mateusz Smoliński [Lider]**
+ - Daniel Sporysz
+ - Katarzyna Wolska
+ - Konrad Magiera
+ - Maciej Kozłowski
+ - Rafał Pachnia
+ 
+# Opis projektu
+
+Tworzona przez nas usługa ma służyć do prostej i bezpiecznej analizy plików graficznych i PDF pod kątem wykrywania oraz analizy zawartego tekstu. Analiza zawartego tekstu będzie polegała na ewaluacji wydźwięku tekstu. Aplikacja będzie umożliwiała analizę tekstu w wybranym języku oraz jego tłumaczenie. Usługa będzie dostępna przez serwis webowy. Po wysłaniu pliku do analizy użytkownik otrzyma powiadomienie w aplikacji, że analiza się rozpoczęła oraz, że po zakończeniu dostanie wiadomość email z kodem dostępu do analizy.
+
 # Funkcjonalność 
 - Aplikacja umożliwia analizę zdjęć oraz dokumetów .pdf zawierających dowolny tekst.
 - Za jej pomocą będzie można:
