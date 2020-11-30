@@ -21,7 +21,7 @@ Tworzona przez nas usługa ma służyć do prostej i bezpiecznej analizy plików
 ![picture](https://github.com/matsmolinski/AI-on-Azure-OCR/blob/main/architecture%20azure.svg)
 
 # Przepływ danych
-![picture](https://github.com/matsmolinski/AI-on-Azure-OCR/blob/main/flowe.svg)
+![picture](https://github.com/matsmolinski/AI-on-Azure-OCR/blob/main/flow.svg)
 
 ## Opis działania
 1. Użytkownik wrzuca zdjęcie/dokument .pdf 
