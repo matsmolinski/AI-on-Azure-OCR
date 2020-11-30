@@ -17,13 +17,9 @@ Tworzona przez nas usługa ma służyć do prostej i bezpiecznej analizy plików
   - przetłumaczyć tekst na wybrany język.
 - Aplikacja generuje kod dostępu do danej analizy oraz wysyła go na wskazany przez użytkownika adres e-mail.
 
-# Przepływ danych
+## Opis działania
 ![picture](https://github.com/matsmolinski/AI-on-Azure-OCR/blob/main/flow.svg)
 
-# Architektura
-![picture](https://github.com/matsmolinski/AI-on-Azure-OCR/blob/main/architecture%20azure.svg)
-
-## Opis działania
 1. Użytkownik wrzuca zdjęcie/dokument .pdf 
 2. Dokument zapisywany jest do Azure Blob Storage
 3. Zostaje utworzony rekord w Table Storage oraz nadawany jest kod dostępu do analizy
@@ -42,6 +38,9 @@ Tworzona przez nas usługa ma służyć do prostej i bezpiecznej analizy plików
 - Event Grid
 - Azure Table Storage
 - Virtual Network
+
+# Architektura
+![picture](https://github.com/matsmolinski/AI-on-Azure-OCR/blob/main/architecture%20azure.svg)
 
 # Harmonogram
 26.11.2020 - Wstępna dokumentacja, założenie repozytorium projektu na GitHub  
