@@ -20,6 +20,9 @@ Tworzona przez nas usługa ma służyć do prostej i bezpiecznej analizy plików
 # Architektura
 ![picture](https://github.com/matsmolinski/AI-on-Azure-OCR/blob/main/architecture%20azure.svg)
 
+# Przepływ danych
+![picture](https://github.com/matsmolinski/AI-on-Azure-OCR/blob/main/flowe.svg)
+
 ## Opis działania
 1. Użytkownik wrzuca zdjęcie/dokument .pdf 
 2. Dokument zapisywany jest do Azure Blob Storage
