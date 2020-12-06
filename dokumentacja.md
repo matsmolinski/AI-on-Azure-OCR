@@ -45,19 +45,17 @@ Tworzona przez nas usługa ma służyć do prostej i bezpiecznej analizy plików
 # Harmonogram
 26.11.2020 - Wstępna dokumentacja, założenie repozytorium projektu na GitHub  
 
-10.12.2020 - Check-point 1:   
+06.12.2020 - Konsultacja dokumentacji i planu projektu
+
+nb. 07.01.2021 - Middle check-point:
 - Skonfigurowany portal Azure
 - Upload zdjęcia na Blob
 - Tworzenie rekordu w bazie z kodem dostępu
-- Podłączenie Event Grid
-
-
-14.01.2021 - Middle check-point 2:
-- Interfejs użytkownika (input)
+- Podłączenie Event Grid/Logic Apps
 - Wykorzystanie Cognitive Services: rozpoznawanie tekstu na zdjęciu, tłumaczenie tekstu, określanie wydźwięku wypowiedzi
-- Stworzenie raportu
 - Wysyłanie maila z kodem dostępu
 
 **28.01.2021 - Prezentacja projektu** 
-- UI (raport)
+- prototypowe UI
+- Stworzenie raportu
 
