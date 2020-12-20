@@ -1,0 +1,26 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    },
+    {
+      "name": "outputblob",
+      "type": "blob",
+      "path": "https://ocrprojectdata.blob.core.windows.net/photos/kot.jpeg",
+      "connection": "AzureWebJobsStorage",
+      "direction": "out"
+    }
+  ]
+}
