@@ -18,7 +18,7 @@
     {
       "name": "outputblob",
       "type": "blob",
-      "path": "https://ocrprojectdata.blob.core.windows.net/photos/kot.jpeg",
+      "path": "https://ocrprojectdata.blob.core.windows.net/photos/",
       "connection": "AzureWebJobsStorage",
       "direction": "out"
     }
