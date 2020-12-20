@@ -6,20 +6,11 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
-      "methods": [
-        "post"
-      ]
+      "methods": ["post"]
     },
     {
       "name": "$return",
       "type": "http",
-      "direction": "out"
-    },
-    {
-      "name": "outputblob",
-      "type": "blob",
-      "path": "https://ocrprojectdata.blob.core.windows.net/photos/",
-      "connection": "AzureWebJobsStorage",
       "direction": "out"
     }
   ]
