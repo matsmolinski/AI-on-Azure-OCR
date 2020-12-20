@@ -21,7 +21,6 @@ def main(req: func.HttpRequest, outputblob: func.Out[func.InputStream]) -> func.
             )
 
     for input_file in req.files.values():
-        print(input_file)
         extension = input_file.filename.split('.')[1]
         logging.info('Adding file to blob storage...')
 
