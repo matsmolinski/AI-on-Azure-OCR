@@ -21,6 +21,16 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             status_code=406
             )
 
+    email_address = req.form.keys()
+
+    if 'email' not in email_address:
+        return func.HttpResponse(
+            f'Missing "email" in body',
+            status_code=400
+            )
+
+    email_address = req.form.get('email') # TODO: verify email
+
     try:        
         table_service = TableService(connection_string=connect_str)
         blob_service_client = BlobServiceClient.from_connection_string(connect_str)
@@ -33,7 +43,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
             blob_client = blob_service_client.get_blob_client(container=container,blob=file_uuid + "." + extension)
             blob_client.upload_blob(input_file)
-            task = {'PartitionKey': extension, 'RowKey': filename, 'email': '', 'data_analysis': ''}
+            task = {'PartitionKey': extension, 'RowKey': file_uuid, 'email': email_address, 'data_analysis': ''}
             table_service.insert_entity('Tasks', task)
             logging.info('File added')
 
