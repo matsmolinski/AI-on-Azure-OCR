@@ -1,7 +1,7 @@
 import logging
 import os
 import uuid
-
+import re
 import azure.functions as func
 from azure.storage.blob import BlobServiceClient, BlobClient
 from azure.cosmosdb.table.tableservice import TableService
@@ -15,21 +15,26 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     container=os.environ["ContainerName"]
 
     if files_len == 0:
-        logging.error('Missing file in form-data body')
-        return func.HttpResponse(
-            f'Missing file in form-data body',
-            status_code=406
-            )
+        msg = 'Missing file in form-data body'
+        logging.error(msg)
+        return func.HttpResponse(msg, status_code=400)
 
-    email_address = req.form.keys()
+    req_keys = req.form.keys()
 
-    if 'email' not in email_address:
-        return func.HttpResponse(
-            f'Missing "email" in body',
-            status_code=400
-            )
+    if 'email' not in req_keys:
+        msg = 'Missing "email" in body'
+        logging.warn(msg)
+        return func.HttpResponse(msg, status_code=400)
+    email_address = req.form.get('email')
 
-    email_address = req.form.get('email') # TODO: verify email
+    if not re.match(r"[^@]+@[^@]+\.[^@]+", email_address):
+        msg = 'Email address is not valid'
+        logging.warn(msg)
+        return func.HttpResponse(msg, status_code=422)
+
+    lang = ''
+    if 'language' in req_keys:
+        lang = req.form.get('language')
 
     try:        
         table_service = TableService(connection_string=connect_str)
@@ -43,16 +48,12 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
             blob_client = blob_service_client.get_blob_client(container=container,blob=file_uuid + "." + extension)
             blob_client.upload_blob(input_file)
-            task = {'PartitionKey': extension, 'RowKey': file_uuid, 'email': email_address, 'data_analysis': ''}
+            task = {'PartitionKey': extension, 'RowKey': file_uuid, 'email': email_address, 'translation': lang, 'data_analysis': ''}
             table_service.insert_entity('Tasks', task)
-            logging.info('File added')
+            logging.info('File added for processing')
 
-        return func.HttpResponse(
-            f'File added for processing',
-            status_code=200
-            )
+        return func.HttpResponse('File added for processing', status_code=201)
     except Exception as e:
-        return func.HttpResponse(
-            f'Error has occured',
-            status_code=400
-            )
+        msg = 'Error has occured'
+        logging.warn(msg)
+        return func.HttpResponse(msg, status_code=400)
