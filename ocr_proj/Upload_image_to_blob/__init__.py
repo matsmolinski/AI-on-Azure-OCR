@@ -46,7 +46,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             filename = file_uuid + "." + extension
             logging.info('Adding file to blob storage...')
 
-            blob_client = blob_service_client.get_blob_client(container=container,blob=file_uuid + "." + extension)
+            blob_client = blob_service_client.get_blob_client(container=container,blob=filename)
             blob_client.upload_blob(input_file)
             task = {'PartitionKey': extension, 'RowKey': file_uuid, 'email': email_address, 'language': lang, 'translation': '', 'image_text': '', 'data_analysis': ''}
             table_service.insert_entity('Tasks', task)
