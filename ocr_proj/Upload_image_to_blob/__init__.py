@@ -48,7 +48,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
             blob_client = blob_service_client.get_blob_client(container=container,blob=file_uuid + "." + extension)
             blob_client.upload_blob(input_file)
-            task = {'PartitionKey': extension, 'RowKey': file_uuid, 'email': email_address, 'translation': lang, 'data_analysis': ''}
+            task = {'PartitionKey': extension, 'RowKey': file_uuid, 'email': email_address, 'language': lang, 'translation': '', 'image_text': '', 'data_analysis': ''}
             table_service.insert_entity('Tasks', task)
             logging.info('File added for processing')
 
