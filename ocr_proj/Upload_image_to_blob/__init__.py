@@ -1,3 +1,4 @@
+import hashlib
 import logging
 import os
 import uuid
@@ -41,14 +42,17 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         blob_service_client = BlobServiceClient.from_connection_string(connect_str)
 
         for input_file in req.files.values():
+            md5_hash = hashlib.md5()
+            md5_hash.update(input_file)
+            input_file_hash = md5_hash.hexdigest()
+
             extension = input_file.filename.split('.')[1]
-            file_uuid = str(uuid.uuid4())
-            filename = file_uuid + "." + extension
+            filename = input_file_hash + "." + extension
             logging.info('Adding file to blob storage...')
 
-            blob_client = blob_service_client.get_blob_client(container=container,blob=file_uuid + "." + extension)
+            blob_client = blob_service_client.get_blob_client(container=container, blob=filename)
             blob_client.upload_blob(input_file)
-            task = {'PartitionKey': extension, 'RowKey': file_uuid, 'email': email_address, 'translation': lang, 'data_analysis': ''}
+            task = {'PartitionKey': extension, 'RowKey': input_file_hash, 'email': email_address, 'translation': lang, 'data_analysis': ''}
             table_service.insert_entity('Tasks', task)
             logging.info('File added for processing')
 
