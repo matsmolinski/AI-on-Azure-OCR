@@ -15,7 +15,7 @@ def main(myblob: func.InputStream):
                  f"Path to: {myblob.uri}\n")
     # subscription_key = os.environ["CognitiveServicesVisionKey"]
     # endpoint = os.environ["CognitiveServicesVisionEndpoint"]
-    subscription_key = "a2194b2fe92541e3aa0a4299a1d74fa5"
+    subscription_key = "rypka"
     endpoint = "https://pogodpolvision.cognitiveservices.azure.com/"
 
     # GENERACJA DOSTĘPU
