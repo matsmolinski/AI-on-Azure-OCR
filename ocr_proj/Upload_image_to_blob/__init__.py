@@ -53,7 +53,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             logging.info('File added for processing')
 
         return func.HttpResponse('File added for processing', status_code=201)
-    except Exception as e:
+    except Exception:
         msg = 'Error has occured'
         logging.warn(msg)
         return func.HttpResponse(msg, status_code=400)
