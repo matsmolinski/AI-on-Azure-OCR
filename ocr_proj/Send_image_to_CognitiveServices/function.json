@@ -6,7 +6,7 @@
       "type": "blobTrigger",
       "direction": "in",
       "path": "photos/{name}",
-      "connection": "ocrprojectdata_STORAGE"
+      "connection": "AzureWebJobsStorage"
     }
   ]
 }
