@@ -25,6 +25,7 @@ def main(myblob: func.InputStream):
     sentiment_key = os.environ["CognitiveServicesSentimentKey"]
     sentiment_enpoint = os.environ["CognitiveServicesSentimentEndpoint"]
     connect_str = os.environ["AzureWebJobsStorage"]
+    
 
     rowkey = myblob.name.split('.')[0].split('/')[1]
     partkey = myblob.name.split('.')[1]
@@ -87,7 +88,7 @@ def main(myblob: func.InputStream):
     table_service.update_entity('Tasks', task)
     logging.info('Table storage updated')
 
-    url = "https://prod-145.westeurope.logic.azure.com:443/workflows/ebdbfc4977234440b9a48a98a9fa36af/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=1wlap-WyQ-Qi9WYsFRliBWAdXCSPg9aljr7LupDnHsI"
+    url = os.environ["EmailURL"]
     content = {
         'email': task.email,
         'code': rowkey
