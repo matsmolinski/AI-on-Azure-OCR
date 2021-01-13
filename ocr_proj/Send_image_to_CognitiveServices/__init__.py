@@ -17,20 +17,12 @@ def main(myblob: func.InputStream):
                  f"Name: {myblob.name}\n"
                  f"Blob Size: {myblob.length} bytes\n"
                  f"Path to: {myblob.uri}\n")
-    # vision_key = os.environ["CognitiveServicesVisionKey"]
-    # vision_endpoint = os.environ["CognitiveServicesVisionEndpoint"]
-    # sentiment_key = os.environ["CognitiveServicesSentimentKey"]
-    # sentiment_enpoint = os.environ["CognitiveServicesSentimentEndpoint"]
-    # translation_key = os.environ["CognitiveServicesTranslationKey"]
-    # translation_endpoint = os.environ["CognitiveServicesTranslationEndpoint"]
-    # translation_loc = "westeurope"
-    # connect_str = os.environ["AzureWebJobsStorage"]
-    vision_key = "fc0bd2284030410cad911605f2b8bc16"
-    vision_endpoint = "https://pogodpol-analycs.cognitiveservices.azure.com/"
-    sentiment_key = "f02788a53b2347c389ebf7861d1cad9b"
-    sentiment_enpoint = "https://pogodpol-analycs.cognitiveservices.azure.com/"
-    translation_key = "9a5e58d5e7e946f88a82ccc973fb8591"
-    translation_endpoint = "https://api.cognitive.microsofttranslator.com/"
+    vision_key = os.environ["CognitiveServicesVisionKey"]
+    vision_endpoint = os.environ["CognitiveServicesVisionEndpoint"]
+    sentiment_key = os.environ["CognitiveServicesSentimentKey"]
+    sentiment_enpoint = os.environ["CognitiveServicesSentimentEndpoint"]
+    translation_key = os.environ["CognitiveServicesTranslationKey"]
+    translation_endpoint = os.environ["CognitiveServicesTranslationEndpoint"]
     translation_loc = "westeurope"
     connect_str = os.environ["AzureWebJobsStorage"]
     
@@ -135,10 +127,8 @@ def main(myblob: func.InputStream):
     task['data_analysis'] = text_sentiment
     table_service.update_entity('Tasks', task)
     logging.info('Table storage updated')
-    print(task)
 
-    # url = os.environ["EmailURL"]
-    url = "https://prod-145.westeurope.logic.azure.com:443/workflows/ebdbfc4977234440b9a48a98a9fa36af/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=1wlap-WyQ-Qi9WYsFRliBWAdXCSPg9aljr7LupDnHsI"
+    url = os.environ["EmailURL"]
     content = {
         'email': task.email,
         'code': rowkey
