@@ -41,23 +41,13 @@ def main(myblob: func.InputStream):
 
     #vision stuff here
     computervision_client = ComputerVisionClient(vision_endpoint, CognitiveServicesCredentials(vision_key))
-    read_results = computervision_client.read(myblob.uri,  raw=True)
 
-    operation_location_remote = read_results.headers["Operation-Location"]
-    operation_id = operation_location_remote.split("/")[-1]
-
-    while True:
-        get_read_results = computervision_client.get_read_result(operation_id)
-        if get_read_results.status not in ['notStarted', 'running']:
-            break
-        time.sleep(1)
+    read_results = computervision_client.recognize_printed_text(myblob.uri)
     text = ""
-    if get_read_results.status == OperationStatusCodes.succeeded:
-        for text_result in get_read_results.analyze_result.read_results:
-            print(get_read_results.analyze_result.read_results)
-            for line in text_result.lines:
-                text = text + line.text + '\n'
-    text = text.replace("\n", " ")
+    for region in read_results.regions:       
+        for line in region.lines:
+            for word in line.words:
+                text = text + word.text + '\n'
     #endof vision stuff
 
     #sentiment stuff here
