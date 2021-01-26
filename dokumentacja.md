@@ -42,6 +42,16 @@ Tworzona przez nas usługa ma służyć do prostej i bezpiecznej analizy plików
 # Architektura
 ![picture](https://github.com/matsmolinski/AI-on-Azure-OCR/blob/main/architecture%20azure.svg)
 
+# Instrukcja odtworzenia rozwiązania
+1. Utworzyć grupę zasobów, w której będą następujące serwisy: Storage Account, Azure Functions, Logic Apps, Cognitive Services (Translator, Text Analytics, Vision),
+2. Utworzenie w Storage Account kontener na blob'y oraz Table Storage,
+3. W Azure Functions zaimplementować funkcje zgodnie z kodem źródłowym dostępnym w tym repozytorium kodu,
+4. Skonfigurować Logic App:
+- uruchamianie za pomocą zapytania http, w któym przekazany będzie adres email oraz kod dostępu do wyników analizy,
+- użyć send grid do wysłania maila z kodem na podany adres. 
+5. Uzupełnić konfigurację Azure Functions o zmienne używane w funkcjach.
+
+
 # Harmonogram
 26.11.2020 - Wstępna dokumentacja, założenie repozytorium projektu na GitHub  
 
